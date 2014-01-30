@@ -54,7 +54,7 @@
   i = value;
 }
 
-- testTimeout
+- (void)testTimeout
 {
   while(1);
 }

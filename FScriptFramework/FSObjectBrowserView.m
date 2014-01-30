@@ -884,7 +884,7 @@ static NSMutableArray *customButtons = nil;
     else if (nbarg == 0)
     {
       // NSBrowserCell *cell;
-      [self sendMessageTo:selectedObject selectorString:selectedString arguments:[NSArray array] putResultInMatrix:matrix];
+      [self sendMessageTo:selectedObject selectorString:selectedString arguments:[FSArray array] putResultInMatrix:matrix];
     
       /*if (cell = [matrix cellAtRow:0 column:0])
       {
@@ -1870,7 +1870,7 @@ static NSMutableArray *customButtons = nil;
       [arguments addObject:[result result]];
     else
     {
-      NSMutableString *errorArgumentString = [NSString stringWithFormat:@"Argument %ld %@", (long)(i+1), [result errorMessage]];
+      NSString *errorArgumentString = [NSString stringWithFormat:@"Argument %ld %@", (long)(i+1), [result errorMessage]];
 
       [result inspectBlocksInCallStack];
       [f selectTextAtIndex:i];
@@ -1924,7 +1924,7 @@ static NSMutableArray *customButtons = nil;
    
   if ([receiver isKindOfClass:[FSNewlyAllocatedObjectHolder class]]) receiver = [receiver object];      
   args[0] = receiver;
-  args[1] = (id)selector;
+  args[1] = (void *)selector;
   for (i = 0; i < nbarg; i++) args[i+2] = [arguments objectAtIndex:i];
     
   @try
